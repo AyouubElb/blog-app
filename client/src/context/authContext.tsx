@@ -38,7 +38,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const login = async (inputs: User) => {
     const res = await axios.post(
-      "http://localhost:8001/api/auths/login",
+      "https://blog-app-api-xiow.onrender.com/api/auths/login",
       inputs
     );
     setCurrentUser(res.data.user);
@@ -46,7 +46,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   };
 
   const logout = async () => {
-    await axios.post("http://localhost:8001/api/auths/logout");
+    await axios.post("https://blog-app-api-xiow.onrender.com/api/auths/logout");
     setCurrentUser(null);
     setAccessToken(null);
   };
