@@ -30,7 +30,7 @@ const Navbar = () => {
       // formData.append("username", "Ayoub");
       // formData.append("email", "ayoub@gmail.com");
       const res = await axios.put(
-        `http://localhost:8001/api/users/update`,
+        `https://blog-app-api-xiow.onrender.com/api/users/update`,
         formData,
         {
           headers: {
@@ -71,7 +71,7 @@ const Navbar = () => {
                 {currentUser.img ? (
                   <img
                     className="w-12 h-12 rounded-full object-cover"
-                    src={`http://localhost:8001/Images/${currentUser?.img}`}
+                    src={`https://blog-app-api-xiow.onrender.com/Images/${currentUser?.img}`}
                     alt=""
                   />
                 ) : (
