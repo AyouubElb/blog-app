@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Edit from "../assets/edit.png";
 import Delete from "../assets/delete.png";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import axios from "axios";
 import moment from "moment";
@@ -56,11 +56,6 @@ const SinglePost = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const getText = (html: string) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent;
   };
 
   return (

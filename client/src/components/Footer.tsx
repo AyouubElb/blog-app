@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Logo from "../assets/O-removebg-preview.png";
 import { AuthContext } from "../context/authContext";
 

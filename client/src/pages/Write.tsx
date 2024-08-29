@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useState, ChangeEvent, MouseEvent, useContext } from "react";
+import { useState, ChangeEvent, MouseEvent, useContext } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useLocation } from "react-router-dom";
@@ -10,7 +10,7 @@ const Write = () => {
   const state = useLocation().state;
   const [value, setValue] = useState<string>(state?.desc || "");
   const [title, setTitle] = useState<string>(state?.title || "");
-  const [img, setImg] = useState<string>(state?.img || "");
+  // const [img, setImg] = useState<string>(state?.img || "");
   const [cat, setCat] = useState<string>(state?.cat || "");
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -26,18 +26,18 @@ const Write = () => {
     }
   };
 
-  const upload = async () => {
-    try {
-      if (file) {
-        const formData = new FormData();
-        formData.append("file", file);
-        const res = await axios.post(`${url}/api/upload`, formData);
-        return res.data;
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const upload = async () => {
+  //   try {
+  //     if (file) {
+  //       const formData = new FormData();
+  //       formData.append("file", file);
+  //       const res = await axios.post(`${url}/api/upload`, formData);
+  //       return res.data;
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -109,8 +109,12 @@ const Write = () => {
             {imageUrl ? (
               <img className="w-24" src={imageUrl} alt="" />
             ) : (
-              img && (
-                <img className="w-24" src={`${url}/Images/${img}`} alt="" />
+              state?.img && (
+                <img
+                  className="w-24"
+                  src={`${url}/Images/${state?.img}`}
+                  alt=""
+                />
               )
             )}
             <label className="underline cursor-pointer" htmlFor="file">

@@ -1,6 +1,6 @@
 import axios from "axios";
 import moment from "moment";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Home = () => {
@@ -32,11 +32,6 @@ const Home = () => {
     };
     fetchData();
   }, [cat]);
-
-  const getText = (html: string) => {
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    return doc.body.textContent;
-  };
 
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
@@ -158,10 +153,6 @@ const Home = () => {
                   {moment(post.date).format("MMMM D, YYYY")}
                 </p>
                 <h1 className="text-2xl text-orangeColor mb-2">{post.title}</h1>
-                {/* <p className="text-lg line-clamp-2 mb-1">
-                  {getText(post.desc)}
-                </p>
-                <button className="more-btn py-1.5 px-3">Read More</button> */}
               </div>
             </div>
           </Link>
