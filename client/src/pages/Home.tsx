@@ -22,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8001/api/posts${cat}`);
+        const res = await axios.get(`https://realtime-chat-app-api-1xcb.onrender.com/api/posts${cat}`);
         setPosts(res.data);
       } catch (error) {
         console.log(error);
@@ -143,7 +143,7 @@ const Home = () => {
             <div className="post-image relative ">
               <img
                 className="object-cover max-h-400 w-full rounded-2xl"
-                src={"http://localhost:8001/Images/" + post.img}
+                src={"https://realtime-chat-app-api-1xcb.onrender.com/Images/" + post.img}
                 alt=""
               />
               <div className="absolute top-auto bottom-5 left-5 bg-white text-orangeColor w-min rounded-full px-2.5 py-0.5 capitalize">
