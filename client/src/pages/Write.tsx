@@ -30,7 +30,7 @@ const Write = () => {
         const formData = new FormData();
         formData.append("file", file);
         const res = await axios.post(
-          "http://localhost:8001/api/upload",
+          "https://blog-app-api-xiow.onrender.com/api/upload",
           formData
         );
         return res.data;
@@ -53,7 +53,7 @@ const Write = () => {
       }
       state
         ? await axios.put(
-            `http://localhost:8001/api/posts/update/${state.id}`,
+            `https://blog-app-api-xiow.onrender.com/api/posts/update/${state.id}`,
             formData,
             {
               headers: {
@@ -65,7 +65,7 @@ const Write = () => {
             "date",
             moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
           );
-      await axios.post(`http://localhost:8001/api/posts/create`, formData, {
+      await axios.post(`https://blog-app-api-xiow.onrender.com/api/posts/create`, formData, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -125,7 +125,7 @@ const Write = () => {
               img && (
                 <img
                   className="w-24"
-                  src={`http://localhost:8001/Images/${img}`}
+                  src={`https://blog-app-api-xiow.onrender.com/Images/${img}`}
                   alt=""
                 />
               )
