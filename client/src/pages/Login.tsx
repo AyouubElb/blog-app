@@ -7,11 +7,12 @@ const Login = () => {
   interface User {
     username: string;
     password: string;
-    img?: String;
+    img: string;
   }
   const [inputs, setInputs] = useState<User>({
     username: "",
     password: "",
+    img: "",
   });
 
   const [err, setError] = useState(null);
