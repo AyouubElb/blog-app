@@ -21,7 +21,7 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8001/api/posts/?cat=${cat}&id=${id}`
+          `https://blog-app-api-xiow.onrender.com/api/posts/?cat=${cat}&id=${id}`
         );
         setPosts(res.data);
       } catch (error) {
@@ -38,7 +38,7 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
         <Link to={`post/${post.id}`} className={postsStyle} key={post.id}>
           <img
             className={imgStyle}
-            src={`http://localhost:8001/Images/${post.img}`}
+            src={`https://blog-app-api-xiow.onrender.com/Images/${post.img}`}
             alt={post.title}
           />
           <h2 className={postTitleStyle}>{post.title}</h2>
