@@ -28,7 +28,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8001/api/auths/register",
+        "https://blog-app-api-xiow.onrender.com/api/auths/register",
         inputs
       );
       console.log("result:", res.data);
