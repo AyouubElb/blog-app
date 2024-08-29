@@ -19,6 +19,8 @@ const SinglePost = () => {
     date: Date;
   }
 
+  const url: string = "https://blog-app-api-xiow.onrender.com";
+
   const [post, setPost] = useState<Post>();
 
   const location = useLocation();
@@ -33,9 +35,7 @@ const SinglePost = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:8001/api/posts/${postId}`
-        );
+        const res = await axios.get(`${url}/api/posts/${postId}`);
         console.log("post", postId);
         setPost(res.data);
       } catch (error) {
@@ -47,7 +47,7 @@ const SinglePost = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8001/api/posts/delete/${postId}`, {
+      await axios.delete(`${url}/api/posts/delete/${postId}`, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -70,14 +70,14 @@ const SinglePost = () => {
           <div className="content flex flex-col gap-6 flex-[5_5_0%]">
             <img
               className=" w-full h-600 object-cover rounded-2xl"
-              src={`http://localhost:8001/Images/${post.img}`}
+              src={`${url}/Images/${post.img}`}
               alt=""
             />
             <div className="user flex items-center gap-3">
               {post.userImg && (
                 <img
                   className="w-12 h-12 rounded-full object-cover"
-                  src={`http://localhost:8001/Images/${post.userImg}`}
+                  src={`${url}/Images/${post.userImg}`}
                   alt=""
                 />
               )}

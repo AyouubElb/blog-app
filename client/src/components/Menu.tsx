@@ -17,12 +17,12 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
 
   const [posts, setPosts] = useState<Posts[]>();
 
+  const url: string = "https://blog-app-api-xiow.onrender.com";
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:8001/api/posts/?cat=${cat}&id=${id}`
-        );
+        const res = await axios.get(`${url}/api/posts/?cat=${cat}&id=${id}`);
         setPosts(res.data);
       } catch (error) {
         console.log(error);
@@ -38,7 +38,7 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
         <Link to={`post/${post.id}`} className={postsStyle} key={post.id}>
           <img
             className={imgStyle}
-            src={`http://localhost:8001/Images/${post.img}`}
+            src={`${url}/Images/${post.img}`}
             alt={post.title}
           />
           <h2 className={postTitleStyle}>{post.title}</h2>

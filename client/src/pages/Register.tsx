@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useState, ChangeEvent, MouseEvent } from "react";
+import { useState, ChangeEvent, MouseEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
-import { BiSolidUserCircle } from "react-icons/bi";
 
 const Register = () => {
   interface User {
@@ -16,6 +15,8 @@ const Register = () => {
     password: "",
   });
 
+  const url: string = "https://blog-app-api-xiow.onrender.com";
+
   const [err, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -27,10 +28,7 @@ const Register = () => {
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:8001/api/auths/register",
-        inputs
-      );
+      const res = await axios.post(`${url}/api/auths/register`, inputs);
       console.log("result:", res.data);
       navigate("/login");
     } catch (err: any) {

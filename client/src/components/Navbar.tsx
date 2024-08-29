@@ -10,15 +10,15 @@ import { GoUpload } from "react-icons/go";
 const Navbar = () => {
   const { currentUser, logout, access_token } = useContext(AuthContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  // const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  console.log("currentUser", currentUser);
+  const url: string = "https://blog-app-api-xiow.onrender.com";
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       const file = files[0];
-      setSelectedFile(file);
+      // setSelectedFile(file);
       sendFileToServer(file);
     }
   };
@@ -27,17 +27,11 @@ const Navbar = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      // formData.append("username", "Ayoub");
-      // formData.append("email", "ayoub@gmail.com");
-      const res = await axios.put(
-        `http://localhost:8001/api/users/update`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
-        }
-      );
+      const res = await axios.put(`${url}/api/users/update`, formData, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
       console.log("User updated successfully!", res.data);
     } catch (error) {
       console.error(error);
@@ -71,7 +65,7 @@ const Navbar = () => {
                 {currentUser.img ? (
                   <img
                     className="w-12 h-12 rounded-full object-cover"
-                    src={`http://localhost:8001/Images/${currentUser?.img}`}
+                    src={`${url}/Images/${currentUser?.img}`}
                     alt=""
                   />
                 ) : (
@@ -90,7 +84,7 @@ const Navbar = () => {
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="menu-button"
-                  tabIndex="-1"
+                  tabIndex={-1}
                 >
                   <div className="py-1" role="none">
                     {/* <div className="flex items-center gap-1 block px-4 py-2 text-sm text-gray-700 cursor-pointer">
@@ -140,7 +134,7 @@ const Navbar = () => {
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
-                      tabIndex="-1"
+                      tabIndex={-1}
                       id="menu-item-4"
                     >
                       Share
@@ -149,13 +143,13 @@ const Navbar = () => {
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
-                      tabIndex="-1"
+                      tabIndex={-1}
                       id="menu-item-5"
                     >
                       Add to favorites
                     </a>
                   </div>
-                  <div className="py-1.5 px-3" onClick={logout} align="center">
+                  <div className="py-1.5 px-3" onClick={logout}>
                     <button className="border border-solid border-gray-400 rounded-full py-1 px-2.5 w-full">
                       Logout
                     </button>

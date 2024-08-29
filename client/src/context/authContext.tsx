@@ -11,6 +11,8 @@ interface User {
   password: string;
 }
 
+const url: string = "https://blog-app-api-xiow.onrender.com";
+
 // export const AuthContext = createContext(null);
 
 export const AuthContext = createContext<{
@@ -37,16 +39,13 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   });
 
   const login = async (inputs: User) => {
-    const res = await axios.post(
-      "http://localhost:8001/api/auths/login",
-      inputs
-    );
+    const res = await axios.post(`${url}/api/auths/login`, inputs);
     setCurrentUser(res.data.user);
     setAccessToken(res.data.access_token);
   };
 
   const logout = async () => {
-    await axios.post("http://localhost:8001/api/auths/logout");
+    await axios.post(`${url}/api/auths/logout`);
     setCurrentUser(null);
     setAccessToken(null);
   };
@@ -62,55 +61,3 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     </AuthContext.Provider>
   );
 };
-
-// import axios from "axios";
-// import { createContext, useEffect, useState } from "react";
-
-// type AuthContextProviderProps = {
-//   children: React.ReactNode;
-// };
-
-// interface User {
-//   username: string;
-//   // Add any other user properties here
-// }
-
-// interface AuthContextValue {
-//   currentUser: User | null;
-//   login: (inputs: User) => Promise<void>;
-//   logout: () => Promise<void>;
-// }
-
-// // Provide initial value matching the structure of AuthContextValue
-// export const AuthContext = createContext<AuthContextValue>({
-//   currentUser: null,
-//   login: async (inputs: User) => {},
-//   logout: async () => {},
-// });
-
-// export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
-//   const [currentUser, setCurrentUser] = useState<User | null>(() => {
-//     const userJson = localStorage.getItem("user");
-//     return userJson ? JSON.parse(userJson) : null;
-//   });
-
-//   const login = async (inputs: User) => {
-//     const res = await axios.post("/auth/login", inputs);
-//     setCurrentUser(res.data);
-//   };
-
-//   const logout = async () => {
-//     await axios.post("/auth/logout");
-//     setCurrentUser(null);
-//   };
-
-//   useEffect(() => {
-//     localStorage.setItem("user", JSON.stringify(currentUser));
-//   }, [currentUser]);
-
-//   return (
-//     <AuthContext.Provider value={{ currentUser, login, logout }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };

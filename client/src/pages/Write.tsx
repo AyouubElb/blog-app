@@ -15,6 +15,8 @@ const Write = () => {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
+  const url: string = "https://blog-app-api-xiow.onrender.com";
+
   const { access_token } = useContext(AuthContext);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,10 +31,7 @@ const Write = () => {
       if (file) {
         const formData = new FormData();
         formData.append("file", file);
-        const res = await axios.post(
-          "http://localhost:8001/api/upload",
-          formData
-        );
+        const res = await axios.post(`${url}/api/upload`, formData);
         return res.data;
       }
     } catch (err) {
@@ -52,20 +51,16 @@ const Write = () => {
         formData.append("file", file);
       }
       state
-        ? await axios.put(
-            `http://localhost:8001/api/posts/update/${state.id}`,
-            formData,
-            {
-              headers: {
-                Authorization: `Bearer ${access_token}`,
-              },
-            }
-          )
+        ? await axios.put(`${url}/api/posts/update/${state.id}`, formData, {
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            },
+          })
         : formData.append(
             "date",
             moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
           );
-      await axios.post(`http://localhost:8001/api/posts/create`, formData, {
+      await axios.post(`${url}/api/posts/create`, formData, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
@@ -123,11 +118,7 @@ const Write = () => {
               <img className="w-24" src={imageUrl} alt="" />
             ) : (
               img && (
-                <img
-                  className="w-24"
-                  src={`http://localhost:8001/Images/${img}`}
-                  alt=""
-                />
+                <img className="w-24" src={`${url}/Images/${img}`} alt="" />
               )
             )}
             <label className="underline cursor-pointer" htmlFor="file">

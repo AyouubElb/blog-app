@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useState, ChangeEvent, MouseEvent, useContext } from "react";
+import { useState, ChangeEvent, MouseEvent, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { FaUser, FaLock } from "react-icons/fa";
@@ -8,6 +7,7 @@ const Login = () => {
   interface User {
     username: string;
     password: string;
+    img?: String;
   }
   const [inputs, setInputs] = useState<User>({
     username: "",
