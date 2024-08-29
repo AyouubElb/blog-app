@@ -12,6 +12,7 @@ interface User {
 }
 
 const url: string = "https://blog-app-api-xiow.onrender.com";
+// const url: string = "http://localhost:8001";
 
 // export const AuthContext = createContext(null);
 

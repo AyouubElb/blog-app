@@ -14,6 +14,7 @@ const Home = () => {
   }
 
   const url: string = "https://blog-app-api-xiow.onrender.com";
+  // const url: string = "http://localhost:8001";
 
   const [posts, setPosts] = useState<Post[]>();
 
