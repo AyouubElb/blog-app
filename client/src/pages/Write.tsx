@@ -71,14 +71,6 @@ const Write = () => {
     }
   };
 
-  // interface PostData {
-  //   title: string;
-  //   desc: string;
-  //   cat: string;
-  //   img?: string;
-  //   date?: string;
-  // }
-
   return (
     <div className={writeContainStyle}>
       <div className={contentStyle}>
