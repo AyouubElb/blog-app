@@ -15,9 +15,8 @@ const Write = () => {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const url: string = process.env.SERVER_URL
-    ? process.env.SERVER_URL
-    : "http://localhost:8001";
+  const url: string = "blog-app-production-f008.up.railway.app";
+  // const url: string = "http://localhost:8001";
 
   const { access_token } = useContext(AuthContext);
 

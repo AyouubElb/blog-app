@@ -17,9 +17,8 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
 
   const [posts, setPosts] = useState<Posts[]>();
 
-  const url: string = process.env.SERVER_URL
-    ? process.env.SERVER_URL
-    : "http://localhost:8001";
+  const url: string = "blog-app-production-f008.up.railway.app";
+  // const url: string = "http://localhost:8001";
 
   useEffect(() => {
     const fetchData = async () => {

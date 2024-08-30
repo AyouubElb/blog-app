@@ -19,9 +19,8 @@ const SinglePost = () => {
     date: Date;
   }
 
-  const url: string = process.env.SERVER_URL
-    ? process.env.SERVER_URL
-    : "http://localhost:8001";
+  const url: string = "blog-app-production-f008.up.railway.app";
+  // const url: string = "http://localhost:8001";
 
   const [post, setPost] = useState<Post>();
 
