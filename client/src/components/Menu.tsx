@@ -17,7 +17,7 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
 
   const [posts, setPosts] = useState<Posts[]>();
 
-  const url: string = "blog-app-production-f008.up.railway.app";
+  const url: string = "https://blog-app-api-xiow.onrender.com";
   // const url: string = "http://localhost:8001";
 
   useEffect(() => {

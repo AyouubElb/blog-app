@@ -12,7 +12,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   // const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const url: string = "blog-app-production-f008.up.railway.app";
+  const url: string = "https://blog-app-api-xiow.onrender.com";
   // const url: string = "http://localhost:8001";
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
