@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import Edit from "../assets/edit.png";
-import Delete from "../assets/delete.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import axios from "axios";
 import moment from "moment";
 import { AuthContext } from "../context/authContext";
+import { FaPen } from "react-icons/fa6";
+import { FaTrashAlt } from "react-icons/fa";
 
 const SinglePost = () => {
   interface Post {
     id: number;
     username: string;
     title: string;
-    desc: string;
+    description: string;
     img: string;
     userImg: string;
     cat: string;
@@ -37,7 +37,7 @@ const SinglePost = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(`${url}/api/posts/${postId}`);
-        console.log("post", postId);
+        console.log("post", res.data);
         setPost(res.data);
       } catch (error) {
         console.log(error);
@@ -85,14 +85,16 @@ const SinglePost = () => {
               {currentUser?.username === post.username && (
                 <div className="actions flex gap-2">
                   <Link to={`/write?edit=${postId}`} state={post}>
-                    <img className="w-8" src={Edit} alt="" />
+                    <p className="border-solid border-2 border-orangeLighter text-orangeLighter w-8 h-8 rounded-full flex hover:bg-orangeLighter hover:text-white">
+                      <FaPen className="text-lg m-auto" />
+                    </p>
                   </Link>
-                  <img
-                    className="w-8 cursor-pointer"
+                  <p
+                    className="border-solid border-2 border-orangeLighter text-orangeLighter w-8 h-8 rounded-full flex cursor-pointer hover:bg-orangeLighter hover:text-white"
                     onClick={handleDelete}
-                    src={Delete}
-                    alt=""
-                  />
+                  >
+                    <FaTrashAlt className="text-xl m-auto" />
+                  </p>
                 </div>
               )}
             </div>
@@ -101,7 +103,7 @@ const SinglePost = () => {
             </h1>
             <div
               className="text-justify leading-7"
-              dangerouslySetInnerHTML={{ __html: post.desc }}
+              dangerouslySetInnerHTML={{ __html: post.description }}
             />
           </div>
           <Menu cat={post.cat} id={post.id} />

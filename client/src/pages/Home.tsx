@@ -105,18 +105,6 @@ const Home = () => {
           </li>
           <li
             className={`category-item ${
-              activeCategory === "design"
-                ? "bg-orangeColor text-white"
-                : "bg-white text-orangeColor hover:bg-orangeColor hover:text-white"
-            }`}
-            onClick={() => handleCategoryClick("design")}
-          >
-            <Link to="/?cat=design">
-              <h6>Design</h6>
-            </Link>
-          </li>
-          <li
-            className={`category-item ${
               activeCategory === "food"
                 ? "bg-orangeColor text-white"
                 : "bg-white text-orangeColor hover:bg-orangeColor hover:text-white"
