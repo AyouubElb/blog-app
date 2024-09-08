@@ -13,7 +13,8 @@ const Navbar = () => {
   // const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   // const url: string = "https://blog-app-api-xiow.onrender.com";
-  const url: string = "http://localhost:8001";
+  // const url: string = "http://localhost:8001";
+  const url: string = "blog-app-three-ruby.vercel.app";
 
   console.log("currentUser.img:", currentUser);
 
