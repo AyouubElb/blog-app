@@ -17,8 +17,8 @@ const Menu: React.FC<MenuProps> = ({ cat, id }) => {
 
   const [posts, setPosts] = useState<Posts[]>();
 
-  const url: string = "https://blog-app-api-xiow.onrender.com";
-  // const url: string = "http://localhost:8001";
+  // const url: string = "https://blog-app-api-xiow.onrender.com";
+  const url: string = "http://localhost:8001";
 
   useEffect(() => {
     const fetchData = async () => {

@@ -12,8 +12,10 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   // const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const url: string = "https://blog-app-api-xiow.onrender.com";
-  // const url: string = "http://localhost:8001";
+  // const url: string = "https://blog-app-api-xiow.onrender.com";
+  const url: string = "http://localhost:8001";
+
+  console.log("currentUser.img:", currentUser);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -24,6 +26,16 @@ const Navbar = () => {
     }
   };
 
+  ////////////////////
+  // const res = await axios.patch(
+  //   `${this.API_URL}/users/update/${this.user._id}`,
+  //   user
+  // );
+
+  // this.jwt.user = res.data.user;
+  // localStorage.setItem("jwt_info", JSON.stringify(this.jwt))
+  //////////////
+
   const sendFileToServer = async (file: File) => {
     try {
       const formData = new FormData();
@@ -33,7 +45,11 @@ const Navbar = () => {
           Authorization: `Bearer ${access_token}`,
         },
       });
-      console.log("User updated successfully!", res.data);
+      console.log("file", file);
+      // if (currentUser) {
+      //   currentUser.img = file;
+      //   console.log("User updated successfully!", currentUser);
+      // }
     } catch (error) {
       console.error(error);
     }

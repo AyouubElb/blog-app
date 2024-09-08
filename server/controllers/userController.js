@@ -45,7 +45,6 @@ export const updateUser = async (req, res) => {
 
     q += columns.join(", ");
     q += " WHERE id = ?";
-    console.log("q:", q);
     values.push(userInfo.id);
     console.log("values", values);
 
@@ -56,6 +55,7 @@ export const updateUser = async (req, res) => {
           .status(500)
           .json({ message: "An error occurred while updating the user" });
       }
+      console.log("data", data);
       return res.status(200).json(data[0]);
     });
 

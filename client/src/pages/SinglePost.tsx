@@ -19,8 +19,8 @@ const SinglePost = () => {
     date: Date;
   }
 
-  const url: string = "https://blog-app-api-xiow.onrender.com";
-  // const url: string = "http://localhost:8001";
+  // const url: string = "https://blog-app-api-xiow.onrender.com";
+  const url: string = "http://localhost:8001";
 
   const [post, setPost] = useState<Post>();
 

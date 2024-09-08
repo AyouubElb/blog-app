@@ -15,8 +15,8 @@ const Write = () => {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const url: string = "https://blog-app-api-xiow.onrender.com";
-  // const url: string = "http://localhost:8001";
+  // const url: string = "https://blog-app-api-xiow.onrender.com";
+  const url: string = "http://localhost:8001";
 
   const { access_token } = useContext(AuthContext);
 
