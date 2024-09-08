@@ -15,9 +15,8 @@ const Register = () => {
     password: "",
   });
 
-  // const url: string = "https://blog-app-api-xiow.onrender.com";
+  const url: string = "https://blog-app-api-xiow.onrender.com";
   // const url: string = "http://localhost:8001";
-  const url: string = "blog-app-three-ruby.vercel.app";
 
   const [err, setError] = useState(null);
 
