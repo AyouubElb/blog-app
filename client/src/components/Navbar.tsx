@@ -41,7 +41,7 @@ const Navbar = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.put(`${url}/api/users/update`, formData, {
+      await axios.put(`${url}/api/users/update`, formData, {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
